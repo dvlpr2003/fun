@@ -26,39 +26,46 @@ const App = () => {
   )
 }
 function Content(){
+  const [value,setValue]=useState(null)
+  
+
+
   return(
     <div id="container-main">
-      {quiz.map((e,i) => <Element answer = {e.answer} question={e.question} number = {i} />)}
+      {quiz.map((e,i) => <Element answer = {e.answer} question={e.question} number = {i} value={value} setValue={setValue} />)}
 
     </div>
   )
 }
-function Element({answer,question,number}){
-  const [value,setValue]=useState(false)
+function Element({answer,question,number,value,setValue}){
+  let newValue = value=== number;
+
 
   function changeValue(){
-    setValue((value)=>!value)
+    setValue(number)
+    console.log(value)
+    console.log(newValue)
+
 
   }
   return(
     <div>
       <div className="question" onClick={changeValue} style={{cursor:"pointer"}}>
-        <Question number = {number} question={question} changeValue={changeValue} value={value}/>
+        <Question number = {number} question={question} changeValue={changeValue} newValue={newValue}/>
       </div>
-      <div style={value? {display:'none'}:{display:"block"}}>
-        <Answer answer={answer}/>
+      <div style={newValue? {display:'block'}:{display:"none"}}>
+        <Answer answer={answer} />
       </div>
-
     </div>
   )
 
 }
-function Question({number,question,changeValue,value}){
+function Question({number,question,changeValue,newValue}){
   return (
     <>
     <span>0{number}</span>
     <span>{question}</span>
-    <span onClick={changeValue}>{value?"+":"-"}</span>
+    <span onClick={changeValue}>{newValue?"-":"+"}</span>
     </>
   )
 }
