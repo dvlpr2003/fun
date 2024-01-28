@@ -1,0 +1,37 @@
+body{
+  width: auto;
+  height:50rem ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container-main {
+  border: 1px solid black;
+  width: 50rem;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  /* align-items:center; */
+}
+.question {
+  margin: auto;
+  width: auto;
+  border: 1px solid rgb(250, 57, 57);
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+
+  align-items: flex-start;
+}
+.question span:last-child{
+  margin-left: auto;
+  justify-self: end;
+  margin-right: 0.3rem;
+  font-size: 2rem;
+  cursor: pointer;
+
+
+}
